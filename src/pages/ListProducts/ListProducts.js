@@ -5,17 +5,25 @@ import {Link} from "react-router-dom";
 
 import getProducts from "../../services/getProducts";
 
+import {useStateValue} from "../../context/StateProvider";
 
+import { SET_PRODUCTS} from "./../../types";
 export const {  Content} = Layout;
 const { Meta } = Card;
 
 const ListProducts = () =>{
-
-    const [products, setProducts] = useState([]);
+    const [{ products, user }, dispatch] = useStateValue();
+    console.log(products)
+    console.log(user)
 
     useEffect(()=>{
         getProducts()
-            .then(json => setProducts(json))
+            .then(json =>{
+               dispatch({
+                   type: SET_PRODUCTS,
+                   products: json
+               })
+            } )
 
     }, [])
 
@@ -24,13 +32,12 @@ const ListProducts = () =>{
             <Content style={{ padding: '0 50px' }}>
                 <Row gutter={16}>
                     {
-                        products.map(product =>{
+                        products?.map(product =>{
                             console.log(product)
                             return(
                                 <Col  lg={6}> `
-                                    <Link to={`/product/${product.id}` }>
+                                    <Link to={`/product/${product.id}` }  key={product.id}>
                                         <Card
-                                            key={product.id}
                                             hoverable
                                             className="card-product"
                                             cover={<img alt="example" src={product.image} className="card-img" />}
