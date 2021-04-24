@@ -5,6 +5,7 @@ import './App.css';
 
 import ListProducts from "./pages/ListProducts/ListProducts";
 import DetailProduct from "./pages/DetailProduct/DetailProduct";
+import NoMatch from "./pages/NoMatch/NoMatch";
 
 const App =()=> {
     return(
@@ -14,6 +15,9 @@ const App =()=> {
             </Route>
             <Route path="/product/:id">
                 <DetailProduct/>
+            </Route>
+            <Route path="*">
+                <NoMatch/>
             </Route>
 
         </Switch>
