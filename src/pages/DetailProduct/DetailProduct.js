@@ -15,8 +15,7 @@ const DetailProduct = () => {
 
     console.log(product)
     return (
-        <Layout>
-            <Content style={{padding: '0 50px'}}>
+
                 <Col>
                     <Row>
                         <Col lg={12}>
@@ -30,8 +29,7 @@ const DetailProduct = () => {
                         </Col>
                     </Row>
                 </Col>
-            </Content>
-        </Layout>
+
     );
 }
 

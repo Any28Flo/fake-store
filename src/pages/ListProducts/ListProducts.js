@@ -1,6 +1,6 @@
-import React , {useState,useEffect} from 'react';
+import React , {useEffect} from 'react';
 
-import {Card, Col, Layout, Row} from "antd";
+import {Card, Col, Row} from "antd";
 import {Link} from "react-router-dom";
 
 import getProducts from "../../services/getProducts";
@@ -8,7 +8,7 @@ import getProducts from "../../services/getProducts";
 import {useStateValue} from "../../context/StateProvider";
 
 import { SET_PRODUCTS} from "./../../types";
-export const {  Content} = Layout;
+
 const { Meta } = Card;
 
 const ListProducts = () =>{
@@ -28,8 +28,7 @@ const ListProducts = () =>{
     }, [])
 
     return (
-        <Layout>
-            <Content style={{ padding: '0 50px' }}>
+
                 <Row gutter={16}>
                     {
                         products?.map(product =>{
@@ -50,9 +49,7 @@ const ListProducts = () =>{
                         })
                     }
                 </Row>
-            </Content>
 
-        </Layout>
 
     );
 }

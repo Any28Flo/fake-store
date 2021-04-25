@@ -6,21 +6,31 @@ import './App.css';
 import ListProducts from "./pages/ListProducts/ListProducts";
 import DetailProduct from "./pages/DetailProduct/DetailProduct";
 import NoMatch from "./pages/NoMatch/NoMatch";
+import Navbar from "./components/Navbar/Navbar";
+import {Layout} from "antd";
 
-const App =()=> {
-    return(
-        <Switch>
-            <Route exact path="/">
-                <ListProducts/>
-            </Route>
-            <Route path="/product/:id">
-                <DetailProduct/>
-            </Route>
-            <Route path="*">
-                <NoMatch/>
-            </Route>
+const {Content} = Layout;
+const App = () => {
+    return (
+        <Layout>
+            <Navbar/>
+{/*
+            <Content style={{padding: '0 50px'}}>
+                <Switch>
+                    <Route exact path="/">
+                        <ListProducts/>
+                    </Route>
+                    <Route path="/product/:id">
+                        <DetailProduct/>
+                    </Route>
+                    <Route path="*">
+                        <NoMatch/>
+                    </Route>
 
-        </Switch>
+                </Switch>
+            </Content>*/}
+
+        </Layout>
     )
 }
 
