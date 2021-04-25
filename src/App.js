@@ -14,7 +14,7 @@ const App = () => {
     return (
         <Layout>
             <Navbar/>
-{/*
+
             <Content style={{padding: '0 50px'}}>
                 <Switch>
                     <Route exact path="/">
@@ -28,7 +28,7 @@ const App = () => {
                     </Route>
 
                 </Switch>
-            </Content>*/}
+            </Content>
 
         </Layout>
     )

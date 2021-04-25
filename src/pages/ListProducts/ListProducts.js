@@ -34,8 +34,8 @@ const ListProducts = () =>{
                         products?.map(product =>{
                             console.log(product)
                             return(
-                                <Col  lg={6}>
-                                    <Link to={`/product/${product.id}` }  key={product.id}>
+                                <Col lg={6} key={product.id}>
+                                    <Link to={`/product/${product.id}` }  >
                                         <Card
                                             hoverable
                                             className="card-product"
