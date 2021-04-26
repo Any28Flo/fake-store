@@ -7,6 +7,8 @@ import ListProducts from "./pages/ListProducts/ListProducts";
 import DetailProduct from "./pages/DetailProduct/DetailProduct";
 import NoMatch from "./pages/NoMatch/NoMatch";
 import Navbar from "./components/Navbar/Navbar";
+import Register from "./pages/Register/Register";
+
 import {Layout} from "antd";
 
 const {Content} = Layout;
@@ -22,6 +24,9 @@ const App = () => {
                     </Route>
                     <Route path="/product/:id">
                         <DetailProduct/>
+                    </Route>
+                    <Route path="/register">
+                        <Register/>
                     </Route>
                     <Route path="*">
                         <NoMatch/>
