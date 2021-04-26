@@ -1,12 +1,28 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Row,Col} from 'antd';
+import { Form, Input, Button, Row,Col} from 'antd';
+import { useHistory } from 'react-router-dom'
+import registerUser from "../../services/user/userService";
+import {useStateValue} from "../../context/StateProvider";
+import {SET_USER} from "../../types/index";
 
-const Register = (props) => {
-    const registerUser = (values) =>{
-        console.log(values)
-    }
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+const Register = () => {
+    const [ dispatch] = useStateValue();
+    const history = useHistory;
+
+
+    const handleSubmit= (values) => {
+        registerUser(values)
+            .then(json =>{
+                dispatch({
+                    type: SET_USER,
+                    user: json
+                })
+                history.push('/')
+            })
+            .catch(e =>{
+                //TODO : handle error
+
+            })
     };
 
     return (
@@ -19,20 +35,9 @@ const Register = (props) => {
                         initialValues={{
                             remember: true,
                         }}
-                        onFinish={registerUser}
+                        onFinish={handleSubmit}
                     >
-                        <Form.Item
-                            label="Username"
-                            name="username"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your username!',
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
+
                         <Form.Item
                             name={ 'email'}
                             label="Email"

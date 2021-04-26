@@ -1,8 +1,12 @@
-import { SET_PRODUCTS} from "./../types"
+import {
+    SET_PRODUCTS,
+    SET_USER
+} from "./../types"
 
 export const initialState ={
     products:null,
-    user: null
+    user: null,
+    jwt: null
 }
 
 const reducer = (state, action)=>{
@@ -11,6 +15,11 @@ const reducer = (state, action)=>{
             return{
                 ...state,
                 products: action.products
+            }
+        case SET_USER:
+            return{
+                ...state,
+                user: action.user
             }
         default:
             return state
