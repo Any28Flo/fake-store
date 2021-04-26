@@ -1,13 +1,22 @@
 import React from 'react';
 import {Menu, Layout} from 'antd';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import FakeApiLogo from './../../media/images/fake-store-logo.png'
 import {useStateValue} from "../../context/StateProvider";
-
+import {SET_USER} from "../../types/index"
 const {Header} = Layout;
 const Navbar = () => {
-    const [ {  user}] = useStateValue();
+    const [ {  user}, dispatch] = useStateValue();
+    const history = useHistory();
+    const handleLogOut = ()=>{
+        dispatch({
+            type: SET_USER,
+            user: null,
+            token: null
 
+        })
+        history.push('/');
+    }
     return (
         <Header>
             <Menu mode="horizontal">
@@ -19,7 +28,7 @@ const Navbar = () => {
                 </Menu.Item>
                 {
                     user ?
-                        <Menu.Item style={{float: 'right'}}>
+                        <Menu.Item style={{float: 'right'}} onClick={handleLogOut}>
                             <Link to="/">
                                 Log out
                             </Link>
