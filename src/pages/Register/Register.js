@@ -6,23 +6,21 @@ import {useStateValue} from "../../context/StateProvider";
 import {SET_USER} from "../../types/index";
 
 const Register = () => {
-    const [ dispatch] = useStateValue();
-    const history = useHistory;
+    const [ {  },dispatch] = useStateValue();
+    const history = useHistory();
 
+    const handleSubmit= async (values) => {
+         const json = await registerUser(values)
+             if(json){
+                 dispatch({
+                     type: SET_USER,
+                     user: json
+                 })
+                 history.push("/")
+             }
 
-    const handleSubmit= (values) => {
-        registerUser(values)
-            .then(json =>{
-                dispatch({
-                    type: SET_USER,
-                    user: json
-                })
-                history.push('/')
-            })
-            .catch(e =>{
                 //TODO : handle error
 
-            })
     };
 
     return (

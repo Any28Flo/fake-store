@@ -15,7 +15,7 @@ export default function registerUser(values) {
         .then(json => {
             return json
         })
-        .catch(e=>{
+      /*  .catch(e=>{
             return e
-        })
+        })*/
 }
