@@ -1,16 +1,16 @@
 import React from 'react';
 import {Form, Input, Button, Row, Col} from 'antd';
-import {useHistory} from 'react-router-dom'
-import {registerUser} from "../../services/user/userService";
+import {useHistory, Link} from 'react-router-dom'
+import {logInUser} from "../../services/user/userService";
 import {useStateValue} from "../../context/StateProvider";
 import {SET_USER} from "../../types/index";
 
-const Register = () => {
+const LogIn = () => {
     const [{user}, dispatch] = useStateValue();
     const history = useHistory();
 
     const handleSubmit = async (values) => {
-        const json = await registerUser(values)
+        const json = await logInUser(values)
         if (json) {
             dispatch({
                 type: SET_USER,
@@ -67,6 +67,7 @@ const Register = () => {
                             </Button>
                         </Form.Item>
                     </Form>
+                    <p>Don't have an account <Link to="/register">register</Link></p>
                 </Col>
             </Row>
         </section>
@@ -74,4 +75,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default LogIn;

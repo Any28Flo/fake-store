@@ -1,7 +1,8 @@
 import React , {useEffect} from 'react';
 
 import {Card, Col, Row} from "antd";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import { HeartOutlined} from '@ant-design/icons';
 
 import getProducts from "../../services/getProducts";
 
@@ -13,8 +14,15 @@ const { Meta } = Card;
 
 const ListProducts = () =>{
 
-    const [{ products }, dispatch] = useStateValue();
+    const [{user, products }, dispatch] = useStateValue();
 
+    const history = useHistory();
+    const handleFav=(idProduct)=>{
+        console.log(idProduct)
+        if(!user) return history.push('/register')
+        console.log('add to fav')
+        console.log(user)
+    }
     useEffect(()=>{
         getProducts()
             .then(json =>{
@@ -31,18 +39,22 @@ const ListProducts = () =>{
                 <Row gutter={16}>
                     {
                         products?.map(product =>{
-                            console.log(product)
                             return(
                                 <Col lg={6} key={product.id}>
-                                    <Link to={`/product/${product.id}` }  >
                                         <Card
                                             hoverable
                                             className="card-product"
                                             cover={<img alt="example" src={product.image} className="card-img" />}
+                                            actions={[
+                                                <HeartOutlined key="setting"  onClick={()=>handleFav(product.id)} />,
+                                                <Link to={`/product/${product.id}` }  >
+                                                    <p >Ver más</p>,
+                                                </Link>
+
+                                            ]}
                                         >
                                             <Meta title={product.title} description={product.description} />
                                         </Card>
-                                    </Link>
                                 </Col>
                             )
                         })

@@ -26,7 +26,7 @@ const Navbar = () => {
                         </Menu.Item>
                         :
                         <Menu.Item style={{float: 'right'}}>
-                            <Link to='/register'>
+                            <Link to='/login'>
                                 Log in
                             </Link>
                         </Menu.Item>

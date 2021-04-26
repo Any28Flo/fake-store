@@ -1,6 +1,6 @@
 const URL = 'http://localhost:3333/api';
 
-export default function registerUser(values) {
+export function registerUser(values) {
     return fetch(`${URL}/register`, {
         // Adding method type
         method: "POST",
@@ -16,4 +16,18 @@ export default function registerUser(values) {
             return json
         })
       //TODO : Handle error
+}
+export  function logInUser(values) {
+    console.log(values)
+    return fetch(`${URL}/login`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email: values.email, password: values.password})
+    })
+        .then(res => res.json())
+        .then(json => {
+            return json
+        })
 }

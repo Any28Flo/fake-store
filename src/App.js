@@ -8,6 +8,8 @@ import DetailProduct from "./pages/DetailProduct/DetailProduct";
 import NoMatch from "./pages/NoMatch/NoMatch";
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./pages/Register/Register";
+import LogIn from "./pages/LogIn/LogIn";
+
 
 import {Layout} from "antd";
 
@@ -27,6 +29,9 @@ const App = () => {
                     </Route>
                     <Route path="/register">
                         <Register/>
+                    </Route>
+                    <Route path="/login">
+                        <LogIn/>
                     </Route>
                     <Route path="*">
                         <NoMatch/>
