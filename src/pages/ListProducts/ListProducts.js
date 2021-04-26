@@ -12,9 +12,8 @@ import { SET_PRODUCTS} from "./../../types";
 const { Meta } = Card;
 
 const ListProducts = () =>{
-    const [{ products, user }, dispatch] = useStateValue();
-    console.log(products)
-    console.log(user)
+
+    const [{ products }, dispatch] = useStateValue();
 
     useEffect(()=>{
         getProducts()

@@ -1,25 +1,25 @@
 import React from 'react';
-import { Form, Input, Button, Row,Col} from 'antd';
-import { useHistory } from 'react-router-dom'
+import {Form, Input, Button, Row, Col} from 'antd';
+import {useHistory} from 'react-router-dom'
 import registerUser from "../../services/user/userService";
 import {useStateValue} from "../../context/StateProvider";
 import {SET_USER} from "../../types/index";
 
 const Register = () => {
-    const [ {  },dispatch] = useStateValue();
+    const [{user}, dispatch] = useStateValue();
     const history = useHistory();
 
-    const handleSubmit= async (values) => {
-         const json = await registerUser(values)
-             if(json){
-                 dispatch({
-                     type: SET_USER,
-                     user: json.user,
-                     token: json.token
-                 })
-                 history.push("/")
-             }
-                //TODO : handle error
+    const handleSubmit = async (values) => {
+        const json = await registerUser(values)
+        if (json) {
+            dispatch({
+                type: SET_USER,
+                user: json.user,
+                token: json.token
+            })
+            history.push("/")
+        }
+        //TODO : handle error
 
     };
 
@@ -37,17 +37,17 @@ const Register = () => {
                     >
 
                         <Form.Item
-                            name={ 'email'}
+                            name={'email'}
                             label="Email"
                             rules={[
-                                { type: 'email' },
+                                {type: 'email'},
                                 {
                                     required: true,
                                     message: 'Please input your email',
                                 }
 
                             ]}>
-                            <Input />
+                            <Input/>
                         </Form.Item>
                         <Form.Item
                             label="Password"
@@ -59,7 +59,7 @@ const Register = () => {
                                 },
                             ]}
                         >
-                            <Input.Password />
+                            <Input.Password/>
                         </Form.Item>
 
                         <Form.Item>
