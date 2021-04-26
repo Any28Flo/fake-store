@@ -15,7 +15,5 @@ export default function registerUser(values) {
         .then(json => {
             return json
         })
-      /*  .catch(e=>{
-            return e
-        })*/
+      //TODO : Handle error
 }

@@ -14,11 +14,11 @@ const Register = () => {
              if(json){
                  dispatch({
                      type: SET_USER,
-                     user: json
+                     user: json.user,
+                     token: json.token
                  })
                  history.push("/")
              }
-
                 //TODO : handle error
 
     };
