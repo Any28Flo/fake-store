@@ -6,7 +6,7 @@ import {
 export const initialState ={
     products:null,
     user: null,
-    jwt: null
+    token : null
 }
 
 const reducer = (state, action)=>{
