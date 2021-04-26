@@ -2,11 +2,12 @@ import React from 'react';
 import {Menu, Layout} from 'antd';
 import {Link} from 'react-router-dom';
 import FakeApiLogo from './../../media/images/fake-store-logo.png'
+import {useStateValue} from "../../context/StateProvider";
 
 const {Header} = Layout;
 const Navbar = () => {
+    const [ {  user}] = useStateValue();
 
-    const isLogged = false;
     return (
         <Header>
             <Menu mode="horizontal">
@@ -17,7 +18,7 @@ const Navbar = () => {
                     </Link>
                 </Menu.Item>
                 {
-                    isLogged ?
+                    user ?
                         <Menu.Item style={{float: 'right'}}>
                             <Link to="/">
                                 Log out
