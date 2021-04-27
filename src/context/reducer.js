@@ -1,12 +1,13 @@
 import {
     SET_PRODUCTS,
-    SET_USER
+    SET_USER,
+    ADD_FAV
 } from "./../types"
 
 export const initialState ={
     products:null,
     user: null,
-    token : ()=>window.sessionStorage.getItem('jwt'),
+    token : window.sessionStorage.getItem('jwt'),
     favs: null
 }
 
@@ -22,6 +23,11 @@ const reducer = (state, action)=>{
                 ...state,
                 user: action.user,
                 token : action.token
+            }
+        case ADD_FAV:
+            return {
+                ...state,
+                fav: action.id
             }
         default:
             return state

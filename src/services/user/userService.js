@@ -31,3 +31,18 @@ export  function logInUser(values) {
             return json
         })
 }
+export function addFav (jwt, idProduct){
+
+    return fetch(`${URL}/add-fav`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'jwt' : jwt
+        },
+        body: JSON.stringify({idFav: idProduct})
+    })
+        .then(res => res.json())
+        .then(json => {
+            return json
+        })
+}

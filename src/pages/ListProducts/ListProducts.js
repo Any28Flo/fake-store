@@ -5,23 +5,31 @@ import {Link, useHistory} from "react-router-dom";
 import { HeartOutlined} from '@ant-design/icons';
 
 import getProducts from "../../services/getProducts";
-
+import {addFav} from "../../services/user/userService";
 import {useStateValue} from "../../context/StateProvider";
 
-import { SET_PRODUCTS} from "./../../types";
+import {
+    SET_PRODUCTS ,
+    ADD_FAV
+        } from "./../../types";
 
 const { Meta } = Card;
 
 const ListProducts = () =>{
 
-    const [{user, products, jwt }, dispatch] = useStateValue();
+    const [{user, products, token }, dispatch] = useStateValue();
 
     const history = useHistory();
-    const handleFav=(idProduct)=>{
+    const handleFav= async(idProduct)=>{
         console.log(idProduct)
-        if(!jwt) return history.push('/register')
-        console.log('add to fav')
-        console.log(user)
+        if(!token) return history.push('/register')
+        const addSuccess =await addFav(token,idProduct)
+        if(addSuccess){
+            console.log("Agregado exitosamen")
+        }
+      /*  dispatch({
+            type: ADD_FAV,
+        })*/
     }
     useEffect(()=>{
         getProducts()

@@ -7,7 +7,7 @@ import {SET_USER} from "../../types/index"
 const {Header} = Layout;
 
 const Navbar = () => {
-    const [ {  user, token}, dispatch] = useStateValue();
+    const [ { token}, dispatch] = useStateValue();
     const history = useHistory();
     const handleLogOut = ()=>{
         dispatch({
