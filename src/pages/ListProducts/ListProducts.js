@@ -4,6 +4,8 @@ import {Card, Col, Row} from "antd";
 import {Link, useHistory} from "react-router-dom";
 import { HeartOutlined} from '@ant-design/icons';
 
+import ButtonFav from "../../components/ButtonFav/ButtonFav";
+
 import getProducts from "../../services/getProducts";
 import {addFav} from "../../services/user/userService";
 import {useStateValue} from "../../context/StateProvider";
@@ -17,20 +19,11 @@ const { Meta } = Card;
 
 const ListProducts = () =>{
 
-    const [{user, products, token }, dispatch] = useStateValue();
+    const [{ products, token,favs }, dispatch] = useStateValue();
 
-    const history = useHistory();
-    const handleFav= async(idProduct)=>{
-        console.log(idProduct)
-        if(!token) return history.push('/register')
-        const addSuccess =await addFav(token,idProduct)
-        if(addSuccess){
-            console.log("Agregado exitosamen")
-        }
-      /*  dispatch({
-            type: ADD_FAV,
-        })*/
-    }
+
+
+
     useEffect(()=>{
         getProducts()
             .then(json =>{
@@ -54,11 +47,10 @@ const ListProducts = () =>{
                                             className="card-product"
                                             cover={<img alt="example" src={product.image} className="card-img" />}
                                             actions={[
-                                                <HeartOutlined key="setting"  onClick={()=>handleFav(product.id)} />,
+                                                <ButtonFav id={product.id}/>,
                                                 <Link to={`/product/${product.id}` }  >
                                                     <p >Ver más</p>,
                                                 </Link>
-
                                             ]}
                                         >
                                             <Meta title={product.title} description={product.description} />

@@ -8,7 +8,7 @@ export const initialState ={
     products:null,
     user: null,
     token : window.sessionStorage.getItem('jwt'),
-    favs: null
+    favs: [1]
 }
 
 const reducer = (state, action)=>{
