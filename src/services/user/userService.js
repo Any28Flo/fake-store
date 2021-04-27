@@ -1,5 +1,5 @@
-const URL = 'http://localhost:3333/api';
-
+//const URL = 'http://localhost:3333/api';
+const URL = `${process.env.REACT_APP_URL_API}/api`
 export function registerUser(values) {
     return fetch(`${URL}/register`, {
         // Adding method type
@@ -47,7 +47,6 @@ export function addFav (jwt, idProduct){
         })
 }
 export  function  getFavs (jwt){
-    console.log(jwt)
     return fetch(`${URL}/get-favs`, {
         method: "GET",
         headers: {
