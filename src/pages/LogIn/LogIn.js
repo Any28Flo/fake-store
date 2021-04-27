@@ -15,7 +15,7 @@ const LogIn = () => {
             dispatch({
                 type: SET_USER,
                 user: json.user,
-                token: json.token
+                jwt: json.token
             })
             window.sessionStorage.setItem('jwt', json.token)
             history.push("/")

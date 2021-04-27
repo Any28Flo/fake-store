@@ -1,26 +1,20 @@
 import React , {useEffect} from 'react';
-
 import {Card, Col, Row} from "antd";
-import {Link, useHistory} from "react-router-dom";
-import { HeartOutlined} from '@ant-design/icons';
-
+import {Link} from "react-router-dom";
+//components
 import ButtonFav from "../../components/ButtonFav/ButtonFav";
-
+//services
 import getProducts from "../../services/getProducts";
-import {addFav} from "../../services/user/userService";
+//context
 import {useStateValue} from "../../context/StateProvider";
-
-import {
-    SET_PRODUCTS ,
-    ADD_FAV
-        } from "./../../types";
+//variables
+import {SET_PRODUCTS} from "./../../types";
 
 const { Meta } = Card;
 
 const ListProducts = () =>{
 
-    const [{ products, token,favs }, dispatch] = useStateValue();
-
+    const [{ products,jwt }, dispatch] = useStateValue();
 
 
 
@@ -32,8 +26,7 @@ const ListProducts = () =>{
                    products: json
                })
             } )
-
-    }, [])
+    }, [jwt])
 
     return (
 
@@ -60,8 +53,6 @@ const ListProducts = () =>{
                         })
                     }
                 </Row>
-
-
     );
 }
 

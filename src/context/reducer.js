@@ -1,14 +1,16 @@
 import {
     SET_PRODUCTS,
     SET_USER,
-    ADD_FAV
+    ADD_FAV,
+    RESET_FAVS,
+    SET_FAVS
 } from "./../types"
 
 export const initialState ={
     products:null,
     user: null,
-    token : window.sessionStorage.getItem('jwt'),
-    favs: [1]
+    jwt: window.sessionStorage.getItem('jwt'),
+    favs: null
 }
 
 const reducer = (state, action)=>{
@@ -22,12 +24,23 @@ const reducer = (state, action)=>{
             return{
                 ...state,
                 user: action.user,
-                token : action.token
+                jwt: action.jwt,
+                favs: action.favs
             }
         case ADD_FAV:
             return {
                 ...state,
                 fav: action.id
+            }
+        case RESET_FAVS:
+            return {
+                ...state,
+                favs: null
+            }
+        case SET_FAVS:
+            return {
+                ...state,
+                favs: action.favs
             }
         default:
             return state

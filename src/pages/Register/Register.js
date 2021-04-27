@@ -15,7 +15,7 @@ const Register = () => {
             dispatch({
                 type: SET_USER,
                 user: json.user,
-                token: json.token
+                jwt : json.token
             })
             history.push("/")
         }

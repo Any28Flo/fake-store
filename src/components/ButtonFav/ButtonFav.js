@@ -5,12 +5,12 @@ import {addFav} from "../../services/user/userService";
 import {useHistory} from "react-router-dom";
 
 const ButtonFav = ({id})=>{
-    const [{ favs, token}, dispatch] = useStateValue();
+    const [{ favs, token}] = useStateValue();
     const history = useHistory();
 
-    const isFav = favs.some( favId => favId === id)
-// :heart 
-    const [label, emoji] = isFav ? ['Remove product', '❌' ] : ['Add product', '❤'] ;
+    const isFav = favs?.some( favId => favId === id)
+
+    const [label, emoji] = isFav ? ['Remove product', '❌' ] : ['Add product', '❤️'] ;
 
     const handleFav= async(idProduct)=>{
         if(!token) return history.push('/register')

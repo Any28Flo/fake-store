@@ -7,13 +7,14 @@ import {SET_USER} from "../../types/index"
 const {Header} = Layout;
 
 const Navbar = () => {
-    const [ { token}, dispatch] = useStateValue();
+    const [ { jwt}, dispatch] = useStateValue();
     const history = useHistory();
     const handleLogOut = ()=>{
         dispatch({
             type: SET_USER,
             user: null,
-            token: null
+           jwt: null,
+           favs: null
 
         })
         window.sessionStorage.removeItem('jwt')
@@ -29,7 +30,7 @@ const Navbar = () => {
                     </Link>
                 </Menu.Item>
                 {
-                    token ?
+                    jwt ?
                         <Menu.Item style={{float: 'right'}} onClick={handleLogOut}>
                             <Link to="/">
                                 Log out

@@ -46,3 +46,20 @@ export function addFav (jwt, idProduct){
             return json
         })
 }
+export  function  getFavs (jwt){
+    console.log(jwt)
+    return fetch(`${URL}/get-favs`, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'jwt' : jwt
+        },
+    })
+        .then(res => res.json())
+        .then(json => {
+            return json
+        })
+        .catch(error=>{
+          return  new Error('error')
+        })
+}
