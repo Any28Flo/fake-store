@@ -1,8 +1,12 @@
 .card-img{
-  width: 100%;
-  height: 30em;
+  width: 9em;
+  height: 9em;
 }
 .card-product{
   width: 100%;
   height: 100%;
+}
+.detail-img{
+  width: 50%;
+  height: 22em;
 }

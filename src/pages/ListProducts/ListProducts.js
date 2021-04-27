@@ -1,52 +1,58 @@
-import React , {useState,useEffect} from 'react';
-
-import {Card, Col, Layout, Row} from "antd";
+import React , {useEffect} from 'react';
+import {Card, Col, Row} from "antd";
 import {Link} from "react-router-dom";
-
+//components
+import ButtonFav from "../../components/ButtonFav/ButtonFav";
+//services
 import getProducts from "../../services/getProducts";
+//context
+import {useStateValue} from "../../context/StateProvider";
+//variables
+import {SET_PRODUCTS} from "./../../types";
 
-
-export const {  Content} = Layout;
 const { Meta } = Card;
 
 const ListProducts = () =>{
 
-    const [products, setProducts] = useState([]);
+    const [{ products,jwt }, dispatch] = useStateValue();
+
+
 
     useEffect(()=>{
         getProducts()
-            .then(json => setProducts(json))
-
-    }, [])
+            .then(json =>{
+               dispatch({
+                   type: SET_PRODUCTS,
+                   products: json
+               })
+            } )
+    }, [jwt])
 
     return (
-        <Layout>
-            <Content style={{ padding: '0 50px' }}>
+
                 <Row gutter={16}>
                     {
-                        products.map(product =>{
-                            console.log(product)
+                        products?.map(product =>{
                             return(
-                                <Col  lg={6}> `
-                                    <Link to={`/product/${product.id}` }>
+                                <Col lg={6} key={product.id}>
                                         <Card
-                                            key={product.id}
                                             hoverable
                                             className="card-product"
                                             cover={<img alt="example" src={product.image} className="card-img" />}
+                                            actions={[
+                                                <ButtonFav id={product.id}/>,
+                                                <Link to={`/product/${product.id}` }  >
+                                                    <p >Ver más</p>,
+                                                </Link>
+                                            ]}
                                         >
                                             <Meta title={product.title} description={product.description} />
                                         </Card>
-                                    </Link>
                                 </Col>
                             )
                         })
                     }
                 </Row>
-            </Content>
-
-        </Layout>
-
     );
 }
 

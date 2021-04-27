@@ -1,19 +1,28 @@
 import React from 'react';
-import {Layout, Col, Row} from "antd";
-
-import {Content} from '../ListProducts/ListProducts';
+import {Col, Row} from "antd";
+import {useParams} from 'react-router-dom';
+import {useStateValue} from "../../context/StateProvider";
 
 const DetailProduct = () => {
+    let {id} = useParams();
+    const [{products}] = useStateValue();
+
+    const product = products.find(product => product.id === parseInt(id))
+
     return (
-        <Layout>
-            <Content style={{padding: '0 50px'}}>
-                <Col>
-                    <Row>
-                        <h2>Product detail</h2>
-                    </Row>
+        <Col>
+            <Row>
+                <Col lg={12}>
+                    <img src={product?.image} alt="product" className="detail-img"/>
                 </Col>
-            </Content>
-        </Layout>
+                <Col lg={12}>
+                    <h2>{product?.title}</h2>
+                    <p>Price : {product?.price} </p>
+                    <p>{product?.description}</p>
+                </Col>
+            </Row>
+        </Col>
+
     );
 }
 
