@@ -17,6 +17,7 @@ const LogIn = () => {
                 user: json.user,
                 token: json.token
             })
+            window.sessionStorage.setItem('jwt', json.token)
             history.push("/")
         }
         //TODO : handle error

@@ -6,7 +6,8 @@ import {
 export const initialState ={
     products:null,
     user: null,
-    token : null
+    token : ()=>window.sessionStorage.getItem('jwt'),
+    favs: null
 }
 
 const reducer = (state, action)=>{

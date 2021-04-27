@@ -14,12 +14,12 @@ const { Meta } = Card;
 
 const ListProducts = () =>{
 
-    const [{user, products }, dispatch] = useStateValue();
+    const [{user, products, jwt }, dispatch] = useStateValue();
 
     const history = useHistory();
     const handleFav=(idProduct)=>{
         console.log(idProduct)
-        if(!user) return history.push('/register')
+        if(!jwt) return history.push('/register')
         console.log('add to fav')
         console.log(user)
     }

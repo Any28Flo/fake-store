@@ -5,8 +5,9 @@ import FakeApiLogo from './../../media/images/fake-store-logo.png'
 import {useStateValue} from "../../context/StateProvider";
 import {SET_USER} from "../../types/index"
 const {Header} = Layout;
+
 const Navbar = () => {
-    const [ {  user}, dispatch] = useStateValue();
+    const [ {  user, token}, dispatch] = useStateValue();
     const history = useHistory();
     const handleLogOut = ()=>{
         dispatch({
@@ -15,6 +16,7 @@ const Navbar = () => {
             token: null
 
         })
+        window.sessionStorage.removeItem('jwt')
         history.push('/');
     }
     return (
@@ -27,7 +29,7 @@ const Navbar = () => {
                     </Link>
                 </Menu.Item>
                 {
-                    user ?
+                    token ?
                         <Menu.Item style={{float: 'right'}} onClick={handleLogOut}>
                             <Link to="/">
                                 Log out
