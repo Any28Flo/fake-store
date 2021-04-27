@@ -26,10 +26,10 @@ const ListProducts = () =>{
                    products: json
                })
             } )
-    }, [jwt])
+    }, [dispatch])
 
     return (
-
+        <section  id="list-product"  >
                 <Row gutter={16}>
                     {
                         products?.map(product =>{
@@ -53,6 +53,7 @@ const ListProducts = () =>{
                         })
                     }
                 </Row>
+        </section>
     );
 }
 

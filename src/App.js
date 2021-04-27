@@ -43,7 +43,7 @@ const App = () => {
     useEffect(()=>{
         listaFavs(jwt)
 
-    }, [])
+    }, [dispatch])
     return (
         <Layout>
             <Navbar/>
