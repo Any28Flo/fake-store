@@ -25,7 +25,7 @@ const LogIn = () => {
     };
 
     return (
-        <section>
+        <section id="login-section">
             <Row>
                 <Col lg={12}>
                     <Form

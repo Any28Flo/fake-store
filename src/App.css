@@ -4,9 +4,24 @@
 }
 .card-product{
   width: 100%;
-  height: 100%;
+  height: 35em;
 }
+
 .detail-img{
   width: 50%;
   height: 22em;
+}
+.ant-layout-content{
+  margin-top:5em
+}
+.list-product{
+  margin-top: 5em;
+}
+.login-section{
+  height: 100vh;
+  margin-top: 9em;
+}
+.register-section{
+  height: 100vh;
+  margin-top: 9em;
 }

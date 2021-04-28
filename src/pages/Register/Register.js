@@ -24,7 +24,7 @@ const Register = () => {
     };
 
     return (
-        <section>
+        <section id="register-section">
             <Row>
                 <Col lg={12}>
                     <Form
